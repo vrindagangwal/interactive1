@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title> newspaper </title>
+<style>
+
+body, h1, h2, h3, p {
+	margin:0;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 17% 3% 20% 15% auto;
+  grid-template-areas:
+    'weather header header header final'
+    'status status status status status'
+    'title title title title title'
+    'image image image article-title article-title'
+    'image image image article article';
+  grid-gap: 10px;
+  padding: 0 20px;
+  background-color: black;
+}
+.container > div {
+  background-color: white;
+ 
+}
+
+.weather { 
+	grid-area: weather; 
+	padding: 0.15em 1em 0.15em 0;
+	text-align: justify;
+  text-align: center;
+  
+
+}
+.header { grid-area: header;
+font-family: TimesNewRoman ;
+font-size:50pt; 
+text-align:center;
+padding: 30px 20px;}
+
+
+.final { grid-area: final;
+  font-family: didot;
+font-size: 20pt;
+text-align: center;
+padding: 0.15em 1em 0.15em 0em;
+ }
+
+
+.status { grid-area: status; 
+  font-family: didot;
+font-size:9pt;
+padding: 0.5em 1em 0.5em 0.5em;
+}
+
+
+.title { grid-area: title;
+font-family: didot;
+font-size:40pt;
+text-align: center;
+padding: 0.15em 1em 0.15em 0;
+
+ }
+
+
+.image { grid-area: image;
+text-align: center; }
+
+
+.article-title { grid-area: article-title;
+font-family: didot;
+padding: 0.15em 1em 0.15em 0.5em;
+
+font-size:30pt; }
+
+
+.article { grid-area: article; 
+font-family: didot;
+font-size: 10pt;
+padding: 2em 2em 2em 2em;
+  text-align: justify;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="weather">
+  	<h3 style="text-align: center; font-style: italic; padding: 0.75em">The Weather</h3>
+  	<p style="font-size: 12px; padding: 0em">Today - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text blah blah blah text blah blah blah text blah</p>
+  </div>
+  <div class="header">The Washington Post</div>
+  <div class="final">FINAL<br><p style="font-size: 10px; padding: 0em">Somewhere through the evolution of the human race we blurred the lines between screens and spaces, leading to create ambiguity between the public and private sphere. The wall that define the space is no longer solid walls punctuated by small windows but have been dematerialized, thinned down with new building technologies and replaced by extended windows.</p></div>  
+  <hr>
+  <div class="status">FEBRUARY 13TH, 2018 &ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp; blah blah blah&ensp;&ensp;&ensp;&ensp;  blah blah&ensp; &ensp;&ensp;&ensp; YEAR: 2018 &ensp; &ensp;&ensp;&ensp; 10$&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;FEBRUARY &ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;13TH, 2018 &ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp; blah blah blah&ensp;&ensp;&ensp;&ensp;  blah blah&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp; YEAR: 2018 &ensp; &ensp;&ensp;&ensp; 10$</div>
+  <hr>
+  <div class="title"><b>"The Eagle Has Landed"-<br> Two Men Walk On The Moon</b>
+  </div>
+  <div class="image"> <img src="https://cdn.glitch.com/9da2d04c-f441-4bba-9424-7a62ae9a19c4%2Fmoonlanding.png?1518079708582">
+
+  </div>
+  <div class="article-title"><b>'One Small Step For Man... Giant Leap For Mankind'</b></div>
+  <div class="article">Ex eaquos explaboreium ut vitatur, soluptas eium conecto explacipsam re offici volorunt, simin plante aut laut quidend ellictiunt hitasped quatectatium et quas cum volorempos quunt.
+Is et quide que nonsect aepudae pa vendus ra vel minciet ommosam que rereprepera dolorro millupi enihil incipsam idi quiam, eture erupti in etumqui officid maio. Odiatiatum adit, idic temporibus ventenihil es quis ditat aliquam, aligenis excestore cus, sum nias voluptatur?
+Ipsanis expedissit qui omnis pro tes si consent hicid maxime samus.
+Ut minimi, iliquod ipiciatur? Quis ut et fugiasp erferitatet et labo. Nimenienda corerunto con cust ad ulparcidus ulparunt asperspit, solo mo temolores et incto quidele scipsandi volor as eos voluptios net mo dolo cone eatiis sinciat emolorecerum id esequis voles ut lamet labo. Nonsendest, corum facearunt aliquiatibus dita expedio cusant odio ipsuntur, inctus et mos dolorestrum alicab in ratet occab id quas essitio nectus sanditatur acilit laut velles ullecerum quos eostem iliqui dellaut doloreicid quae nam volores si berum faceatur autatius elluptatis voluptatius qui tempore pudanditisi quaspid ucilitioriae issuntibusam asit omnimus ne pratis ent, quat volenim posapitatque rescita nobist res reperum quassit illore et labores et dolo blaceaquia nulluptae namendusdae non pa abor si quiae nos ut pore veniaeped quosae consenit, ea de vendi dolum, quam quatur?
+Ceaquatem expe sin reribus nobis il ipsam ilia cone soluptis et dolupicto dolorae iumquas soluptat ut hilicae stionsequat.Itistis voluptatus asintib uscipsunt laborumque ventur, sedit laut iditam dolor re veroressin restibus accum qui volutet et alitati stiurit laborum utatur? Magnatetur?
+Aximinulpa derovit unt et facerum faccabo reptatem di ipsam fugitione consedi psapelis evendicid molorepe in pratio to omnihic aboresendam simin rest et erum lam, sundi ame volupta quametusci atias quia nusaectectio temquiatem sum rerio esci re id moluptatur mo omni dolo berumque volorpo rrorporitis restrum nihit exero voloreium quam veraerrum</div> 
+</div>
+
+</body>
+</html>
