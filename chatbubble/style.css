@@ -7,6 +7,7 @@
 .heading {
 	text-align: center;
 	padding: 1em;
+	font-size: 3em;
 }
 
 .container {
@@ -39,12 +40,9 @@
 	padding: 0 0 1em 0;
 }
 
-.left_data p, .right_data p {
-	padding: 1em 0 0 0;
-}
-
 .left_data img, .right_data img {
 	width: 100%;
+	margin-bottom: 1em;
 }
 
 .left_arrow, .right_arrow {
@@ -76,6 +74,12 @@
 
 .now {
 	padding: 1em;
+	text-align: center;
+}
+
+.now h2 {
+	font-size: 2em;
+	padding: 0.75em;
 }
 
 .line {
@@ -83,5 +87,16 @@
 	height: 30px;
 	background-color: black;
 	border-radius: 5px;
+}
+
+.images {
+	padding: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.images img {
+	height: 300px;
+	margin: 3em 2em;
 }
 
