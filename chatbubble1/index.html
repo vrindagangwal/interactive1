@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title of the document</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#iphone {
+			height: 100vh;
+			position: fixed;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		#container {
+			margin: 0 auto;
+		}
+
+		#chat {
+			width: 90%;
+			margin: 0 auto;
+		}
+
+		#placeholder {
+			background-color: white;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<img id="iphone" src="assets/iphone.png">
+	<div id="container">
+		<div id="chat">
+			<div id="placeholder"></div>
+			<div id="placeholder2"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var imageCount = 24;
+		var left = [1,3,5,7,11,13,14,15,16,18,20,22,24,10];
+		var right = [2,4,6,8,9,12,17,19,21,23];
+		var sounds = 
+			[
+				new Audio("assets/sound1.mp3"),
+				new Audio("assets/sound2.mp3"),
+				new Audio("assets/sound3.mp3"),
+				new Audio("assets/sound4.mp3")
+			];
+		var i = 1;
+
+		window.onload = function () {
+			var container = document.getElementById("container");
+			var iphone = document.getElementById("iphone");
+			var chat = document.getElementById("chat");
+			var placeholder = document.getElementById("placeholder");
+			placeholder.style.height = iphone.offsetHeight/8 + "px";
+			var placeholder2 = document.getElementById("placeholder2");
+			placeholder2.style.height = iphone.offsetHeight/7.5 + "px";
+			container.style.width = iphone.offsetWidth + "px";
+			chatBubbles();
+		}
+
+		function chatBubbles() {
+			var i = 0;
+			var interval = setInterval(function(){
+			    i += 1;
+			    if(i === imageCount){
+			        clearInterval(interval);
+			    }
+			    addChat(i);
+			    window.scrollTo(0,document.body.scrollHeight);
+			}, 2000);
+		}
+
+		function addChat(i) {
+			var alignleft = left.includes(i);
+			if(i < 10) {
+				var num = "0" + i.toString();
+			}
+			else {
+				var num = i.toString();
+			}
+			var image = "assets/BUBBLE-" + num + ".png";
+			var chat = document.getElementById("chat");
+			var img = document.createElement("img");
+			img.src = image;
+			img.style.width = "100%";
+			var box = document.createElement("div");
+			box.style.width = "100%";
+			var boxChild = document.createElement("div");
+			box.style.width = "75%";
+			if(alignleft) { box.style.margin = "0 auto 0 0";}
+			else { box.style.margin = "0 0 0 auto";}
+			box.style.padding = "1em 0.75em"
+			box.appendChild(boxChild);
+			boxChild.appendChild(img);
+			var placeholder2 = document.getElementById("placeholder2");
+			chat.insertBefore(box,placeholder2);
+			setTimeout(function() { window.scrollTo(0,document.body.scrollHeight);},300);
+			sounds[Math.floor(Math.random() * Math.floor(sounds.length))].play();
+			console.log(i);
+		}
+	</script>
+</body>
+</html>
