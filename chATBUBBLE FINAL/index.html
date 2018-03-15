@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title of the document</title>
+	<style>
+		body {
+			margin: 0;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		img {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+
+	</div>
+	<script type="text/javascript">
+		var bubbleCount = 24;
+		var memeCount = 6;
+		var sounds = 
+			[
+				new Audio("assets/sound1.mp3"),
+				new Audio("assets/sound2.mp3")
+			];
+		var bubble = 1;
+
+		window.onload = function () {
+			// var container = document.getElementById("container");
+			// var iphone = document.getElementById("iphone");
+			// var chat = document.getElementById("chat");
+			// var placeholder = document.getElementById("placeholder");
+			// placeholder.style.height = iphone.offsetHeight/8 + "px";
+			// var placeholder2 = document.getElementById("placeholder2");
+			// placeholder2.style.height = iphone.offsetHeight/7.5 + "px";
+			// container.style.width = iphone.offsetWidth + "px";
+			for(var i = 0; i < memeCount; i++) {
+				var img = document.createElement("img");
+				img.id = i + "";
+				img.src = "assets/pop" + (i+1) + ".jpg";
+				img.style.maxWidth =  "33%";
+				img.style.height = "50%";
+				img.style.width = "auto";
+				img.style.maxHeight = '50%';
+				img.style.top = (i%2) * 50.0 + "%";
+				img.style.left = (i%3) * 33.0 + "%";
+				if(i === 0) img.style.display = "block";
+				else img.style.display = "none";
+				img.addEventListener("click", clicked)
+				document.getElementById("container").appendChild(img);
+				}
+			}
+
+		function clicked(e) {
+			var i = Number(e.target.id);
+			if(i < 5) {
+				document.getElementById(i+1 +"").style.display = "block";
+			}
+			else {
+				chatBubbles();
+			}
+		}
+
+
+
+		function chatBubbles() {
+			bubble = 0;
+			var interval = setInterval(function(){
+			    bubble += 1;
+			    if(bubble === bubbleCount){
+			        clearInterval(interval);
+			    }
+			    addChat(bubble);
+			    //window.scrollTo(0,document.body.scrollHeight);
+			}, 250);
+		}
+
+		function addChat(i) {
+			if(i < 10) {
+				var num = "0" + i.toString();
+			}
+			else {
+				var num = i.toString();
+			}
+			var image = "assets/BUBBLE-" + num + ".png";
+			var img = document.createElement("img");
+			img.src = image;
+			// var width = 30.0 + (Math.random() * 15.0);
+			var width = 40.0;
+			img.style.maxWidth = width + "%";
+			img.style.height = "auto";
+			img.style.width = "auto";
+			img.style.maxHeight = '25%';
+			console.log(img.style.height);
+			img.style.top = Math.random() * (75) + "%";
+			img.style.left = Math.random() * (100.0-width) + "%";
+			document.getElementById("container").appendChild(img);
+			sounds[0].play();
+			console.log(i);
+		}
+	</script>
+</body>
+</html>
