@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pleasework</title>
+    <style>
+        .container {
+            width: 0;
+            height: 0;
+        }
+        .centered {
+            position: fixed;
+            transform: translate(-50%, -100%);
+        }
+
+        .word {
+            min-width: 12%;
+            letter-spacing: 3px;
+            border-radius: 15px;
+            text-align: center;
+            padding: 0.35em 0;
+            color: white;
+            font-size: 1.25em;
+            background-color: rgb(255, 0, 0);
+            font-family: "Futura"
+        }
+
+        .smart_word {
+        	padding: 0.35em 0.75em;
+        	width: auto;
+        }
+
+        .smart_word a{
+            color: white;
+        }
+
+        .smart {
+            padding: 0.35em 0.85em;
+            border-radius: 25px;
+            color: rgb(255, 0, 0);
+            font-size: 2em;
+            letter-spacing: 5px;
+            border: 7px solid black;
+            background-color: yellow;
+            font-family: "Futura";
+        }
+
+        .smart:hover {
+            cursor: pointer;
+        }
+
+        html, body {
+            width:  100%;
+            height: 100%;
+            margin: 0px;
+        }
+
+        canvas {
+            margin: auto auto;
+        }
+
+        .note {
+            position: absolute;
+            right: 2%;
+            bottom: 1%;
+            font-family: "Futura";
+            font-size: 1.5em;
+        }
+    </style>    
+    <link href="https://fonts.googleapis.com/css?family=Futura" rel="stylesheet">
+</head>
+<body>
+    <canvas id="background" margin="0px"></canvas>
+    <p class="note">Connect "SMART" to get smart objects</p>
+    <div id="container"></div>
+</body>
+<script type="text/javascript">
+    window.onload = function() {
+        load_bubbles();
+    }
+
+    function load_bubbles() {
+        var boxes = [
+            { "text": "phone",      "position": ['23%', '15%'], "lines": [[0.45, 0.4], [0.45, 0.251], [0.36, 0.251], [0.36, 0.205], [0.23, 0.205]] },
+            { "text": "chocolate",  "position": ['16%', '35%'], "lines": [[0.401, 0.46], [0.34, 0.46], [0.34, 0.41], [0.16, 0.41]] },
+            { "text": "table",      "position": ['16%', '50%'], "lines": [[0.401, 0.501], [0.24, 0.501]] },
+            { "text": "board",      "position": ['28%', '64%'], "lines": [[0.41, 0.56], [0.41, 0.647], [0.36, 0.647]] },
+            { "text": "donut",     "position": ['20%', '79%'], "lines": [[0.45, 0.6], [0.45, 0.751], [0.20, 0.751]] },
+            { "text": "ice-cream",  "position": ['50%', '85%'], "lines": [[0.501, 0.81], [0.501, 0.6]] },
+            { "text": "friend",     "position": ['61%', '11%'], "lines": [[0.501, 0.4], [0.501, 0.11], [0.54, 0.11]] },
+            { "text": "brain",      "position": ['70%', '20%'], "lines": [[0.57, 0.4], [0.57, 0.21], [0.63, 0.21]] },
+            { "text": "pen",        "position": ['80%', '32%'], "lines": [[0.61, 0.49], [0.64, 0.49], [0.64, 0.28], [0.8, 0.28]] },
+            { "text": "dog",        "position": ['78%', '57%'], "lines": [[0.61, 0.531], [0.78, 0.531]] },
+            { "text": "watch",      "position": ['77%', '75%'], "lines": [[0.54, 0.602], [0.64, 0.602], [0.64, 0.709], [0.77, 0.709]] },
+        ]
+
+        var container = document.getElementById("container");
+        for(var i = 0; i < boxes.length; i++) {
+            var p = document.createElement("p");
+            var t = document.createTextNode(boxes[i].text);
+            p.append(t);
+            p.classList.add("centered");
+            p.classList.add("word")
+            p.style.left = boxes[i].position[0];
+            p.style.top = boxes[i].position[1];
+            p.addEventListener('drop', dropped);
+            p.addEventListener('dragover', allowDrop);
+            container.append(p);
+        }
+
+        var p = document.createElement("p");
+        var t = document.createTextNode("SMART");
+        p.append(t);
+        p.classList.add("centered");
+        p.classList.add("smart")
+        p.draggable = true;
+        p.style.left = '50%';
+        p.style.top = '50%';
+        container.append(p);
+
+        var canvas = document.getElementById("background");
+        var ctx = canvas.getContext("2d");
+        ctx.canvas.width  = 0.99 * window.innerWidth;
+        ctx.canvas.height =  0.99 *window.innerHeight;
+        var width = ctx.canvas.width;
+        var height = ctx.canvas.height;
+        console.log(width);
+        console.log(height);
+        ctx.strokeStyle = '#CC3333';
+        console.log(ctx.strokeStyle);
+
+        for(var i = 0; i < boxes.length; i++) {
+            if(boxes[i].lines.length >= 2) {
+                ctx.moveTo(boxes[i].lines[0][0] * width, boxes[i].lines[0][1] * height);
+                for(var j = 1; j < boxes[i].lines.length; j++) {
+                    console.log(i, j);
+                    ctx.lineTo(boxes[i].lines[j][0] * width, boxes[i].lines[j][1] * height);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+    }
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function dropped(ev) {
+        ev.preventDefault();
+        ev.target.innerHTML = "<a target=\"_blank\" href=\"" + ev.target.innerHTML + ".html\">smart "+ ev.target.innerHTML + "<\a>";
+        ev.target.classList.add("smart_word")
+        console.log(ev.target);
+        ev.target.style.backgroundColor = "blue";
+    }
+
+
+
+</script>
+</html>

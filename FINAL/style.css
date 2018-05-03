@@ -1,0 +1,37 @@
+@media print {
+	.screen_image {
+		display: none;
+	}
+	
+	@page { 
+		margin: 0; 
+	}
+
+	#poster {
+		height: 100%;
+		top: 50%;  /* position the top  edge of the element at the middle of the parent */
+		left: 50%; /* position the left edge of the element at the middle of the parent */
+
+		transform: translate(-50%, -50%);
+		position: absolute;
+	}
+}
+
+body {
+	margin: 0;
+}
+div {
+	height: 99vh;
+}
+
+@media screen {
+	.screen_image {
+		display: block;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	#poster {
+		display: none;
+	}
+}	

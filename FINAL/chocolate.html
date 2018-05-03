@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Smart Chocolate</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<img id="poster" src="images/poster1.jpg">
+	<div>
+		<img class="screen_image" src="images/chocolate.jpg">
+	</div>
+	<script type="text/javascript">
+		window.onbeforeprint = function() {
+			var num = Math.floor(Math.random() * 3) + 1;
+			document.getElementById("poster").src = "images/poster" + num + ".jpg";
+		}
+	</script>
+</body>
+</html>
